@@ -1,0 +1,30 @@
+
+namespace: rohank-ns
+
+mongodb:
+  replicas: 1
+  labels:
+    app: mongodb-app
+  name: mongodb-container
+  image:
+    repository: mongo
+    tag: latest
+  port: 27017
+
+  service:
+    port: 27017
+    type: ClusterIP
+
+userprofile:
+  replicas: 2
+  labels:
+    app: organic-ghee-app
+  name: rohank-container
+  image:
+    repository: rohankanhai51/organic-ghee
+    tag: v1
+  port: 5656
+
+  service:
+    port: 80
+    type: LoadBalancer
